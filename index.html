@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Services</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo"><img src="./images/logo.png" alt="Company Logo" /></div>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Our Services</a>
+        <a href="#">Pricing</a>
+        <a href="#">FAQ</a>
+      </nav>
+      <a href="#" class="btn btn-primary quote-btn">Get A Quote</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h1>Your Resume <br><span class="highlight">Deserves A Yes</span> Let’s<br> Make It Happen</h1>
+        <p>If Your Resume Isn’t Getting Responses, It’s Time For An Upgrade. <br>
+          Get an ATS-optimized resume crafted by HR experts to help you <br>
+          Land More interviews. Our resumes Are Designed To Get Your Foot <br>
+          In The Door And Place Your Name At The Top Of The Shortlist.
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-outline">RESUME PACKAGES</a>
+          <a href="#" class="btn btn-primary">CONTACT US</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="./images/student.png" alt="Student" />
+        <!-- Rating Card -->
+        <div class="rating">
+          <div class="rating-left">
+            <span class="value">4.9</span>
+          </div>
+          <div class="rating-right">
+            <div class="star-rating-box">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="text"><b>Instructor Rating</b></div>
+          </div>
+        </div>
+      <!-- Stat Card -->
+      <div class="stat">
+        <i class="fas fa-graduation-cap stat-icon"></i>
+        <div class="stat-info">
+          <span class="value">260+</span>
+          <span class="text">Online Resumes</span>
+          <span class="text">Created</span>
+
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="one">What You Get</div>
+      <h2>You’re Not Just <span class="highlight">Another Applicant</span> And Your Resume Shouldn’t Look Like One</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="./images/1.png" alt="Resume Icon" />
+          <h3>A Resume Format That Gets You Interviews</h3>
+          <p>Get a professionally written, keyword-optimized resume that lands in recruiter inboxes.</p>
+        </div>
+        <div class="card">
+          <img src="./images/2.png" alt="Cover Letter Icon" />
+          <h3>A Cover Letter Style That Stands Out Strong</h3>
+          <p>Stand out with a cover letter that speaks directly to the role and reflects your strengths.</p>
+        </div>
+        <div class="card">
+          <img src="./images/3.png" alt="LinkedIn Icon" />
+          <h3>A LinkedIn Profile That Works For You</h3>
+          <p>Attract the right eyes, start conversations, and show up in recruiter searches.</p>
+        </div>
+        <div class="card">
+          <img src="./images/4.png" alt="Interview Icon" />
+          <h3>An Interview Strategy That Builds Confidence</h3>
+          <p>Interview preparation with real HR professionals so you speak clearly and confidently.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        navLinks.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
