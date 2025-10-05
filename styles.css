@@ -79,206 +79,120 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #fff; line-h
   .features .card img{margin:0 auto 1rem;}
 }
 
-/* ================= Mobile Responsive (≤576px) ================= */
+/* ================= Mobile Hero & Features Fix (≤576px) ================= */
 @media(max-width:576px){
-  /* Toggle Icon */
-  .menu-toggle{
-    display:block;
-    font-size:1.8rem;
-    color:#eb3040;
-    cursor:pointer;
-    z-index:1001;
+  /* Hero Section */
+  .hero {
+    padding: 3rem 1.2rem;
+    text-align: left; /* keep text left-aligned like desktop */
   }
 
-  /* Mobile Menu Panel */
-  .nav-container{padding:0 1.5rem;}
-  .nav-links{
-    display:flex;
-    flex-direction:column;
-    position:fixed;
-    top:0;
-    right:-100%;
-    height:100vh;
-    width:75%;
-    max-width:300px;
-    background:#fff0f2;
-    padding:6.25rem 1.875rem 2rem;
-    gap:1.25rem;
-    box-shadow:-4px 0 25px rgba(0,0,0,0.15);
-    border-top-left-radius:20px;
-    border-bottom-left-radius:20px;
-    transition:right .4s ease, opacity .4s ease;
-    z-index:1000;
-    align-items:flex-start;
-    opacity:0;
-  }
-  .nav-links.active{right:0;opacity:1;}
-
-  /* Menu Links Styling */
-  .nav-links a{
-    font-size:1.1rem;
-    font-weight:600;
-    color:#eb3040;
-    width:100%;
-    padding:.2rem 0;
-    text-align:left;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .nav-links a i {
-    display:inline-block;
-    font-size:0.8rem;
-    color:#444;
-    width:20px;
-    text-align:center;
-  }
-  .nav-links a::after{display:none;}
-
-  /* Mobile CONTACT US Button */
-  .nav-links .contact-btn-mobile{
-    display:block !important;
-    width:100%;
-    text-align:center;
-    margin-top:2rem;
-    padding:.9rem 0;
-    font-size:1rem;
-    box-shadow:0 0 15px rgba(230,57,70,.3);
-    border-radius:50px;
-    background:#eb3040;
-    color:#fff;
-  }
-  .nav-links .contact-btn-mobile i { display:none; }
-
-  /* Body Overlay */
-  body.nav-open{overflow:hidden;}
-  body.nav-open::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.45);
-    z-index:999;
-    transition:opacity .4s ease;
+  .hero-container {
+    display: flex;
+    flex-direction: row; /* maintain desktop layout */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+    flex-wrap: wrap; /* wrap on small screens */
   }
 
-  /* ================= Hero Section ================= */
-  .hero{
-    padding:4rem 1.2rem;
-    text-align:center;
-  }
-  .hero-container{
-    flex-direction:column;
-    align-items:center;
-    gap:2rem;
-    position:relative;
-  }
-  .hero-text{
-    max-width:100%;
-  }
-  .hero-text h1{
-    font-size:1.9rem;
-    line-height:1.25;
-    text-align:center;
-  }
-  .hero-text p{
-    font-size:.95rem;
-    line-height:1.5;
-    margin-bottom:2rem;
-    text-align:center;
-  }
-  .hero-buttons{
-    flex-direction:row;
-    gap:1rem;
-    justify-content:center;
-    margin-top:1.5rem; /* space between buttons and text */
+  .hero-text {
+    flex: 1 1 48%;
+    max-width: 48%;
   }
 
-  /* Hero Image Container */
-  .hero-image{
-    max-width:350px;
-    margin:0 auto;
-    position:relative;
-    padding:20px;
+  .hero-text h1 {
+    font-size: 1.9rem;
+    line-height: 2.2rem;
   }
-  .hero-image::before{
-    content:'';
-    position:absolute;
-    width:85%;
-    height:85%;
-    top:5%;
-    left:50%;
-    transform:translateX(-50%);
-    background:#ffcbd5;
-    border-radius:50%;
-    z-index:-2;
+
+  .hero-text p {
+    font-size: 0.95rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
   }
-  .hero-image::after{
-    content:'';
-    position:absolute;
-    width:68%;
-    height:68%;
-    top:10%;
-    left:50%;
-    transform:translateX(-50%);
-    background:#ffdae0;
-    border-radius:50%;
-    z-index:-1;
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem; /* gap between buttons */
+    margin-top: 1rem;
   }
-  .hero-image img{
-    width:100%;
-    max-width:100%;
-    display:block;
-    margin:0 auto;
-    position:relative;
-    z-index:1;
+
+  /* Hero Buttons: add gap between Resume Packages & Contact Us */
+  .hero-buttons a:first-child {
+    margin-right: 0.5rem;
+  }
+
+  .hero-image {
+    flex: 1 1 48%;
+    max-width: 48%;
+    position: relative;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .hero-image::before {
+    width: 85%;
+    height: 85%;
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hero-image::after {
+    width: 68%;
+    height: 68%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   /* Rating Card */
-  .hero-image .rating{
-    position:absolute;
-    top:65%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    background:#f2eeee;
-    border-radius:12px;
-    padding:1rem 1.5rem;
-    display:flex;
-    align-items:flex-start;
-    gap:.8rem;
-    min-width:170px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.15);
-    z-index:10;
-  }
-  .hero-image .rating .rating-left .value{
-    font-size:2rem;
+  .hero-image .rating {
+    top: 60%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    min-width: 170px;
   }
 
   /* Stat Card */
-  .hero-image .stat{
-    position:absolute;
-    bottom:5%;
-    right:50%;
-    transform:translateX(50%);
-    background:#fff;
-    border-radius:12px;
-    padding:1rem 1.2rem;
-    display:flex;
-    align-items:center;
-    gap:.8rem;
-    min-width:150px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.15);
-    z-index:10;
+  .hero-image .stat {
+    bottom: 10%;
+    right: 8%;
+    transform: translateY(0);
+    min-width: 150px;
   }
 
-  /* Features */
-  .features .cards{
-    grid-template-columns:1fr;
-    gap:1.5rem;
+  /* Features Section */
+  .features {
+    padding: 4rem 1rem;
+    text-align: left;
   }
-  .features .card{
-    text-align:left;
+
+  .features h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
   }
-  .features .card img{
-    margin:0 0 1rem 0;
+
+  .features .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .features .card {
+    text-align: left;
+    padding: 1.5rem 1rem;
+  }
+
+  .features .card img {
+    margin: 0 0 1rem 0;
   }
 }
