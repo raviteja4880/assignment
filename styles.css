@@ -461,7 +461,7 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #fff; line-h
     display: flex;
     flex-direction: row;       
     justify-content: center;   
-    width: 50%;                /* Adjusted width for Figma look */
+    width: 65%;                /* Adjusted width for Figma look */
     margin: 0 auto;            /* Center container */
     gap: 10px;                 /* Space between buttons */
     flex-wrap: wrap;           /* Wrap if needed */
