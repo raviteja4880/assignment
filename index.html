@@ -16,7 +16,7 @@
       <div class="logo"><img src="./images/logo.png" alt="Company Logo" /></div>
 
       <!-- Mobile toggle -->
-      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
 
       <!-- Nav Links -->
       <nav class="nav-links">
@@ -25,7 +25,7 @@
         <a href="#"><i class="fa-solid fa-briefcase nav-icon"></i> Our Services</a>
         <a href="#"><i class="fa-solid fa-tags nav-icon"></i> Pricing</a>
         <a href="#"><i class="fa-solid fa-circle-question nav-icon"></i> FAQ</a>
-        <a href="#" class="contact-btn"><i class="fa-solid fa-envelope nav-icon"></i> Get A Quote</a>
+        <a href="#" class="contact-btn"><i class="fa-solid fa-envelope nav-icon"></i>Contact Us</a>
       </nav>
 
       <!-- Desktop button -->
@@ -114,21 +114,31 @@
 
   <!-- Script -->
   <script>
+    // Select elements
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const body = document.body;
 
-    menuToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
+    // Toggle menu open/close
+    menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-      body.classList.toggle('nav-open');
+      document.body.classList.toggle('nav-open'); // for dark overlay
     });
 
+    // Optional: close menu when clicking outside the menu
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
         navLinks.classList.remove('active');
-        body.classList.remove('nav-open');
+        document.body.classList.remove('nav-open');
       }
+    });
+
+    // Optional: close menu when clicking on a link
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        document.body.classList.remove('nav-open');
+      });
     });
   </script>
 </body>
