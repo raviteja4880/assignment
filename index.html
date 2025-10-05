@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume Services</title>
 
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="styles.css" />
@@ -15,18 +14,21 @@
   <header class="navbar">
     <div class="container nav-container">
       <div class="logo"><img src="./images/logo.png" alt="Company Logo" /></div>
-      <div class="menu-toggle">
-        <i class="fas fa-bars open-icon"></i>
-        <i class="fas fa-times close-icon"></i>
-      </div>
+
+      <!-- Mobile toggle -->
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+
+      <!-- Nav Links -->
       <nav class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">About Us</a>
-        <a href="#">Our Services</a>
-        <a href="#">Pricing</a>
-        <a href="#">FAQ</a>
-        <a href="#" class="contact-btn">Contact Us</a>
+        <a href="#"><i class="fa-solid fa-house nav-icon"></i> Home</a>
+        <a href="#"><i class="fa-solid fa-circle-info nav-icon"></i> About Us</a>
+        <a href="#"><i class="fa-solid fa-briefcase nav-icon"></i> Our Services</a>
+        <a href="#"><i class="fa-solid fa-tags nav-icon"></i> Pricing</a>
+        <a href="#"><i class="fa-solid fa-circle-question nav-icon"></i> FAQ</a>
+        <a href="#" class="contact-btn"><i class="fa-solid fa-envelope nav-icon"></i> Get A Quote</a>
       </nav>
+
+      <!-- Desktop button -->
       <a href="#" class="btn btn-primary quote-btn">Get A Quote</a>
     </div>
   </header>
@@ -38,7 +40,7 @@
         <h1>Your Resume <br><span class="highlight">Deserves A Yes</span> Let’s<br> Make It Happen</h1>
         <p>If Your Resume Isn’t Getting Responses, It’s Time For An Upgrade. <br>
           Get an ATS-optimized resume crafted by HR experts to help you <br>
-          Land More Interviews. Our resumes Are Designed To Get Your Foot <br>
+          Land More interviews. Our resumes Are Designed To Get Your Foot <br>
           In The Door And Place Your Name At The Top Of The Shortlist.
         </p>
         <div class="hero-buttons">
@@ -52,11 +54,15 @@
 
         <!-- Rating Card -->
         <div class="rating">
-          <div class="rating-left"><span class="value">4.9</span></div>
+          <div class="rating-left">
+            <span class="value">4.9</span>
+          </div>
           <div class="rating-right">
             <div class="star-rating-box">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
             </div>
             <div class="text"><b>Instructor Rating</b></div>
@@ -106,23 +112,22 @@
     </div>
   </section>
 
-  <!-- Navbar Script -->
+  <!-- Script -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
 
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       navLinks.classList.toggle('active');
       body.classList.toggle('nav-open');
-      menuToggle.classList.toggle('active');
     });
 
     document.addEventListener('click', (e) => {
-      if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+      if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
         navLinks.classList.remove('active');
         body.classList.remove('nav-open');
-        menuToggle.classList.remove('active');
       }
     });
   </script>
