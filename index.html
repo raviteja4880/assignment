@@ -4,37 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume Services</title>
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- ================= Navbar ================= -->
   <header class="navbar">
     <div class="container nav-container">
-      <div class="logo"><img src="./images/logo.png" alt="Company Logo" /></div>
-      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      <div class="logo">
+        <img src="./images/logo.png" alt="Company Logo" />
+      </div>
+      <div class="menu-toggle" role="button" aria-label="Open navigation menu" aria-expanded="false" tabindex="0">
+        <i class="fas fa-bars"></i>
+      </div>
       <nav class="nav-links">
         <a href="#">Home</a>
         <a href="#">About Us</a>
         <a href="#">Our Services</a>
         <a href="#">Pricing</a>
         <a href="#">FAQ</a>
+        <a href="#" class="desktop-contact-link">CONTACT US</a>
+        <a href="#" class="btn btn-primary contact-btn-mobile">CONTACT US</a>
       </nav>
       <a href="#" class="btn btn-primary quote-btn">Get A Quote</a>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- ================= Hero ================= -->
   <section class="hero">
     <div class="container hero-container">
       <div class="hero-text">
         <h1>Your Resume <br><span class="highlight">Deserves A Yes</span> Let’s<br> Make It Happen</h1>
         <p>If Your Resume Isn’t Getting Responses, It’s Time For An Upgrade. <br>
-          Get an ATS-optimized resume crafted by HR experts to help you <br>
-          Land More interviews. Our resumes Are Designed To Get Your Foot <br>
-          In The Door And Place Your Name At The Top Of The Shortlist.
+           Get an ATS-optimized resume crafted by HR experts to help you <br>
+           Land More interviews. Our resumes Are Designed To Get Your Foot <br>
+           In The Door And Place Your Name At The Top Of The Shortlist.
         </p>
         <div class="hero-buttons">
           <a href="#" class="btn btn-outline">RESUME PACKAGES</a>
@@ -43,8 +49,7 @@
       </div>
       <div class="hero-image">
         <img src="./images/student.png" alt="Student" />
-        <!-- Rating Card -->
-        <div class="rating">
+        <div class="rating" aria-hidden="true">
           <div class="rating-left">
             <span class="value">4.9</span>
           </div>
@@ -59,21 +64,19 @@
             <div class="text"><b>Instructor Rating</b></div>
           </div>
         </div>
-      <!-- Stat Card -->
-      <div class="stat">
-        <i class="fas fa-graduation-cap stat-icon"></i>
-        <div class="stat-info">
-          <span class="value">260+</span>
-          <span class="text">Online Resumes</span>
-          <span class="text">Created</span>
-
+        <div class="stat" aria-hidden="true">
+          <i class="fas fa-graduation-cap stat-icon"></i>
+          <div class="stat-info">
+            <span class="value">260+</span>
+            <span class="text">Online Resumes</span>
+            <span class="text">Created</span>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- ================= Features ================= -->
   <section class="features">
     <div class="container">
       <div class="one">What You Get</div>
@@ -103,20 +106,45 @@
     </div>
   </section>
 
-  <!-- Scripts -->
+  <!-- ================= JS ================= -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
+    function openMenu() {
+      navLinks.classList.add('active');
+      document.body.classList.add('nav-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      const icon = menuToggle.querySelector('i');
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-xmark');
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove('active');
+      document.body.classList.remove('nav-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      const icon = menuToggle.querySelector('i');
+      icon.classList.add('fa-bars');
+      icon.classList.remove('fa-xmark');
+    }
+
     menuToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      navLinks.classList.toggle('active');
+      navLinks.classList.contains('active') ? closeMenu() : openMenu();
     });
 
     document.addEventListener('click', (e) => {
-      if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-        navLinks.classList.remove('active');
+      if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        closeMenu();
       }
+    });
+
+    // Close menu if mobile link clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 576) closeMenu();
+      });
     });
   </script>
 </body>
