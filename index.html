@@ -16,7 +16,11 @@
       <div class="logo"><img src="./images/logo.png" alt="Company Logo" /></div>
 
       <!-- Mobile toggle -->
-      <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+      <div class="menu-toggle">
+        <i class="fa-solid fa-bars open-icon"></i>
+        <i class="fa-solid fa-xmark close-icon"></i>
+      </div>
+
 
       <!-- Nav Links -->
       <nav class="nav-links">
@@ -25,7 +29,7 @@
         <a href="#"><i class="fa-solid fa-briefcase nav-icon"></i> Our Services</a>
         <a href="#"><i class="fa-solid fa-tags nav-icon"></i> Pricing</a>
         <a href="#"><i class="fa-solid fa-circle-question nav-icon"></i> FAQ</a>
-        <a href="#" class="contact-btn"><i class="fa-solid fa-envelope nav-icon"></i>Contact Us</a>
+        <a href="#"><i class="fa-solid fa-envelope nav-icon"></i>Contact Us</a>
       </nav>
 
       <!-- Desktop button -->
@@ -114,30 +118,27 @@
 
   <!-- Script -->
   <script>
-    // Select elements
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const openIcon = document.querySelector('.open-icon');
+    const closeIcon = document.querySelector('.close-icon');
 
-    // Toggle menu open/close
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-      document.body.classList.toggle('nav-open'); // for dark overlay
+      document.body.classList.toggle('nav-open');
+
+      // Toggle icons visibility
+      openIcon.style.display = navLinks.classList.contains('active') ? 'none' : 'inline-block';
+      closeIcon.style.display = navLinks.classList.contains('active') ? 'inline-block' : 'none';
     });
 
-    // Optional: close menu when clicking outside the menu
-    document.addEventListener('click', (e) => {
-      if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-        navLinks.classList.remove('active');
-        document.body.classList.remove('nav-open');
-      }
-    });
-
-    // Optional: close menu when clicking on a link
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(link => {
+    // Close menu when a nav link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
         document.body.classList.remove('nav-open');
+        openIcon.style.display = 'inline-block';
+        closeIcon.style.display = 'none';
       });
     });
   </script>
