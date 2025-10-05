@@ -37,6 +37,7 @@ body {
   font-weight: normal;
   color: #fff;
   border: none;
+  /* Shadow around whole button */
   box-shadow: 0 0 18px 4px rgba(230, 57, 70, 0.35);
 }
 
@@ -60,6 +61,7 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 0 18px 4px rgba(230, 57, 70, 0.35);
 }
+
 
 /* ================= Navbar ================= */
 .navbar {
@@ -150,28 +152,10 @@ body {
   background: #c81e2f;
 }
 
-/* ========== Mobile Menu Toggle Icons ========== */
 .menu-toggle {
   display: none;
-  font-size: 1.8rem;
-  color: #eb3040;
+  font-size: 1.5rem;
   cursor: pointer;
-  z-index: 1100;
-  position: relative;
-}
-
-/* Hide close icon initially */
-.menu-toggle .close-icon {
-  display: none;
-}
-
-/* When nav is active, show close icon and hide bars */
-body.nav-open .menu-toggle .open-icon {
-  display: none;
-}
-
-body.nav-open .menu-toggle .close-icon {
-  display: inline-block;
 }
 
 /* ================= Hero ================= */
@@ -226,33 +210,35 @@ body.nav-open .menu-toggle .close-icon {
   z-index: 2;
 }
 
-/* Circles */
+/* First (outer) circle */
 .hero-image::before {
   content: '';
   position: absolute;
   width: 80%;
   height: 90%;
-  background: #ffcbd5;
+  background: #ffcbd5; /* light pink */
   border-radius: 50%;
   bottom: -5%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: -2;
+  z-index: -2; /* behind everything */
 }
 
+/* Second (inner) circle */
 .hero-image::after {
   content: '';
   position: absolute;
   width: 63%;
   height: 73%;
-  background: #ffdae0;
+  background: #ffdae0; /* darker pink */
   border-radius: 50%;
   bottom: 2.5%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: -1;
+  z-index: -1; /* above first circle, below image */
 }
 
+/* Hero Image on top of circles */
 .hero-image img {
   width: 100%;
   max-width: 370px;
@@ -262,7 +248,7 @@ body.nav-open .menu-toggle .close-icon {
   z-index: 1;
 }
 
-/* --- Rating & Stat Cards --- */
+/* --- Rating Card --- */
 .hero-image .rating {
   position: absolute;
   top: 63%;
@@ -281,8 +267,10 @@ body.nav-open .menu-toggle .close-icon {
 
 .hero-image .rating .rating-left .value {
   font-size: 2.5rem;
+  font-style: normal;
   color: #2a9d8f;
   font-weight: 800;
+  display: block;
   line-height: 1;
 }
 
@@ -309,6 +297,7 @@ body.nav-open .menu-toggle .close-icon {
   font-size: 0.8rem;
 }
 
+/* --- Stat Card --- */
 .hero-image .stat {
   position: absolute;
   bottom: 15%;
@@ -319,6 +308,7 @@ body.nav-open .menu-toggle .close-icon {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   padding: 1rem 1.2rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 0.8rem;
   z-index: 10;
@@ -328,114 +318,41 @@ body.nav-open .menu-toggle .close-icon {
 .hero-image .stat-icon {
   font-size: 2rem;
   color: #e63946;
+  flex-shrink: 0;
 }
 
 .hero-image .stat-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 0.2rem;
 }
 
 .hero-image .stat-info .text {
   font-size: 0.85rem;
   color: #555;
   font-weight: 500;
+  line-height: 1.2;
 }
 
 .hero-image .stat-info .value {
   font-size: 1rem;
   color: #151414;
   font-weight: 700;
-}
-
-/* ================= Features ================= */
-.features {
-  padding: 6rem 0;
-  background: #fff;
-  text-align: center;
-}
-
-.one {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffe2e5;
-  color: #131111;
-  font-weight: 600;
-  font-size: 1.1rem;
-  padding: 10px 20px;
-  border-radius: 6px;
-  width: fit-content;
-  margin: 0 auto 2rem;
-}
-
-.features h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #222;
-  max-width: 800px;
-  margin: 0 auto 3rem;
-  line-height: 1.4;
-}
-
-.features .highlight {
-  color: #e63946;
-}
-
-.features .cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  justify-content: center;
-  align-items: stretch;
-}
-
-.features .card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-  border: 1px solid #f5f5f5;
-}
-
-.features .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(230, 57, 70, 0.2);
-}
-
-.features .card img {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 1.5rem;
-}
-
-.features .card h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 0.75rem;
-}
-
-.features .card p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
+  line-height: 1.2;
 }
 
 /* ================= Responsive ================= */
 @media (max-width: 1024px) {
+  .menu-toggle { display: block; }
+  .nav-container .quote-btn { display: none; }
+
   .hero-container {
     flex-direction: column;
     text-align: center;
   }
 
-  .hero-text {
-    max-width: 100%;
-  }
+  .hero-text { max-width: 100%; }
 
   .hero-image {
     margin-top: 2rem;
@@ -448,25 +365,183 @@ body.nav-open .menu-toggle .close-icon {
     display: none;
   }
 
-  .features .cards {
-    grid-template-columns: repeat(2, 1fr);
+  .hero-image .rating {
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hero-image .stat {
+    bottom: -20px;
+    right: 50%;
+    transform: translateX(50%);
   }
 }
 
-/* ================= Mobile (≤576px) ================= */
 @media (max-width: 576px) {
-  .menu-toggle {
-    display: block;
-    position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-  }
-
-  .quote-btn {
-    display: none !important;
-  }
+  .menu-toggle { display: block; }
 
   .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #ffe8ec;
+    position: absolute;
+    top: 65px;
+    right: 5%;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    gap: 1rem;
+    min-width: 200px;
+    z-index: 999;
+  }
+
+  .nav-links.active { display: flex; }
+}
+
+/* ================= Features Section ================= */
+.features {
+  padding: 6rem 0;
+  background: #fff;
+  text-align: center;
+}
+
+.one {
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
+  background-color: #ffe2e5; /* solid rose background */
+  color: #131111;               /* white text for contrast */
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  width: fit-content;        /* shrink to content */
+  margin: 0 auto 2rem;       /* center block + spacing below */
+}
+
+
+.features h2 {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  color: #222;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.4;
+}
+
+.features .highlight {
+  color: #e63946;
+}
+
+/* Card container */
+.features .cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Individual Card */
+.features .card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  border: 1px solid #f5f5f5;
+}
+
+.features .card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at top left, #fff0f2, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.features .card:hover::before {
+  opacity: 1;
+}
+
+.features .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(230, 57, 70, 0.2);
+}
+
+/* Card image */
+.features .card img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1.5rem;
+  display: block;
+  z-index: 1;
+}
+
+/* Card title */
+.features .card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.75rem;
+  z-index: 1;
+  position: relative;
+}
+
+/* Card text */
+.features .card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  z-index: 1;
+  position: relative;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .features .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .features h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .features .card {
+    text-align: center;
+  }
+
+  .features .card img {
+    margin: 0 auto 1rem;
+  }
+}
+
+/* ================= Mobile Responsive (≤576px) ================= */
+@media (max-width: 576px) {
+  /* Navbar toggle button */
+  .menu-toggle {
+    display: block;
+    font-size: 1.8rem;
+    color: #eb3040;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  /* Mobile menu panel */
+  .nav-links {
+    display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -474,7 +549,7 @@ body.nav-open .menu-toggle .close-icon {
     height: 100vh;
     width: 75%;
     background: linear-gradient(180deg, #ffe8ec 0%, #fff0f2 100%);
-    padding: 6rem 2rem 2rem;
+    padding: 5rem 2rem 2rem;
     gap: 1.8rem;
     box-shadow: -4px 0 25px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
@@ -492,11 +567,14 @@ body.nav-open .menu-toggle .close-icon {
     font-weight: 600;
     color: #eb3040;
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+    transition: color 0.3s;
   }
 
+  .nav-links a:hover {
+    color: #c81e2f;
+  }
+
+  /* Add red button inside menu bottom */
   .nav-links .contact-btn {
     background: #eb3040;
     color: #fff;
@@ -508,15 +586,64 @@ body.nav-open .menu-toggle .close-icon {
     box-shadow: 0 0 15px rgba(230, 57, 70, 0.3);
   }
 
+  /* Hero section fix */
+  .hero {
+    padding: 4rem 1.2rem;
+    text-align: center;
+  }
+
+  .hero-container {
+    flex-direction: column;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 1.9rem;
+    line-height: 1.3;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+    margin: 1.2rem 0 2rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .hero-image {
+    margin-top: 2rem;
+    padding: 0;
+  }
+
+  .hero-image img {
+    max-width: 280px;
+  }
+
+  /* Center rating/stat cards for mobile */
+  .hero-image .rating,
+  .hero-image .stat {
+    position: relative;
+    margin: 1rem auto;
+    justify-content: center;
+    left: auto;
+    right: auto;
+    transform: none;
+  }
+
+  /* Dark overlay when nav open */
   body.nav-open::after {
     content: "";
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
-    z-index: 900;
-  }
-
-  .features .cards {
-    grid-template-columns: 1fr;
+    z-index: 999;
+    transition: opacity 0.3s ease;
   }
 }

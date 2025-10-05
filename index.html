@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume Services</title>
-
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="styles.css" />
@@ -14,25 +14,14 @@
   <header class="navbar">
     <div class="container nav-container">
       <div class="logo"><img src="./images/logo.png" alt="Company Logo" /></div>
-
-      <!-- Mobile toggle -->
-      <div class="menu-toggle">
-        <i class="fa-solid fa-bars open-icon"></i>
-        <i class="fa-solid fa-xmark close-icon"></i>
-      </div>
-
-
-      <!-- Nav Links -->
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
       <nav class="nav-links">
-        <a href="#"><i class="fa-solid fa-house nav-icon"></i> Home</a>
-        <a href="#"><i class="fa-solid fa-circle-info nav-icon"></i> About Us</a>
-        <a href="#"><i class="fa-solid fa-briefcase nav-icon"></i> Our Services</a>
-        <a href="#"><i class="fa-solid fa-tags nav-icon"></i> Pricing</a>
-        <a href="#"><i class="fa-solid fa-circle-question nav-icon"></i> FAQ</a>
-        <a href="#"><i class="fa-solid fa-envelope nav-icon"></i>Contact Us</a>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Our Services</a>
+        <a href="#">Pricing</a>
+        <a href="#">FAQ</a>
       </nav>
-
-      <!-- Desktop button -->
       <a href="#" class="btn btn-primary quote-btn">Get A Quote</a>
     </div>
   </header>
@@ -52,10 +41,8 @@
           <a href="#" class="btn btn-primary">CONTACT US</a>
         </div>
       </div>
-
       <div class="hero-image">
         <img src="./images/student.png" alt="Student" />
-
         <!-- Rating Card -->
         <div class="rating">
           <div class="rating-left">
@@ -72,16 +59,16 @@
             <div class="text"><b>Instructor Rating</b></div>
           </div>
         </div>
+      <!-- Stat Card -->
+      <div class="stat">
+        <i class="fas fa-graduation-cap stat-icon"></i>
+        <div class="stat-info">
+          <span class="value">260+</span>
+          <span class="text">Online Resumes</span>
+          <span class="text">Created</span>
 
-        <!-- Stat Card -->
-        <div class="stat">
-          <i class="fas fa-graduation-cap stat-icon"></i>
-          <div class="stat-info">
-            <span class="value">260+</span>
-            <span class="text">Online Resumes</span>
-            <span class="text">Created</span>
-          </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -116,30 +103,20 @@
     </div>
   </section>
 
-  <!-- Script -->
+  <!-- Scripts -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const openIcon = document.querySelector('.open-icon');
-    const closeIcon = document.querySelector('.close-icon');
 
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       navLinks.classList.toggle('active');
-      document.body.classList.toggle('nav-open');
-
-      // Toggle icons visibility
-      openIcon.style.display = navLinks.classList.contains('active') ? 'none' : 'inline-block';
-      closeIcon.style.display = navLinks.classList.contains('active') ? 'inline-block' : 'none';
     });
 
-    // Close menu when a nav link is clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
         navLinks.classList.remove('active');
-        document.body.classList.remove('nav-open');
-        openIcon.style.display = 'inline-block';
-        closeIcon.style.display = 'none';
-      });
+      }
     });
   </script>
 </body>
