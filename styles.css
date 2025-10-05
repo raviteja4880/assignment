@@ -89,7 +89,7 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #fff; line-h
   .nav-links a{font-size:1.1rem;font-weight:600;color:#eb3040;width:100%;padding:.2rem 0;}
   .nav-links a::after{display:none;}
   .nav-links .desktop-contact-link{display:none;}
-  .nav-links .contact-btn-mobile{display:block;width:100%;margin-top:1rem;padding:.9rem 0;font-size:1rem;text-align:center;box-shadow:0 0 15px rgba(230,57,70,.3);border-radius:50px;}
+  .nav-links .contact-btn-mobile{display:block;width:100%;margin-top:1rem;padding:.9rem 0;font-size:1rem;text-align:center;box-shadow:0 0 15px rgba(230,57,70,.3);border-radius:50px;background:#eb3040;color:#fff;}
   body.nav-open{overflow:hidden;}
   body.nav-open::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999;transition:opacity .4s ease;}
   .hero{padding:4rem 1.2rem;text-align:center;}

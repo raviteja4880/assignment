@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- ================= Navbar ================= -->
+  <!-- Navbar -->
   <header class="navbar">
     <div class="container nav-container">
       <div class="logo">
@@ -25,22 +25,22 @@
         <a href="#">Our Services</a>
         <a href="#">Pricing</a>
         <a href="#">FAQ</a>
-        <a href="#" class="desktop-contact-link">CONTACT US</a>
+        <!-- Mobile only CONTACT US -->
         <a href="#" class="btn btn-primary contact-btn-mobile">CONTACT US</a>
       </nav>
       <a href="#" class="btn btn-primary quote-btn">Get A Quote</a>
     </div>
   </header>
 
-  <!-- ================= Hero ================= -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="container hero-container">
       <div class="hero-text">
         <h1>Your Resume <br><span class="highlight">Deserves A Yes</span> Let’s<br> Make It Happen</h1>
         <p>If Your Resume Isn’t Getting Responses, It’s Time For An Upgrade. <br>
-           Get an ATS-optimized resume crafted by HR experts to help you <br>
-           Land More interviews. Our resumes Are Designed To Get Your Foot <br>
-           In The Door And Place Your Name At The Top Of The Shortlist.
+          Get an ATS-optimized resume crafted by HR experts to help you <br>
+          Land More interviews. Our resumes Are Designed To Get Your Foot <br>
+          In The Door And Place Your Name At The Top Of The Shortlist.
         </p>
         <div class="hero-buttons">
           <a href="#" class="btn btn-outline">RESUME PACKAGES</a>
@@ -76,7 +76,7 @@
     </div>
   </section>
 
-  <!-- ================= Features ================= -->
+  <!-- Features Section -->
   <section class="features">
     <div class="container">
       <div class="one">What You Get</div>
@@ -106,7 +106,7 @@
     </div>
   </section>
 
-  <!-- ================= JS ================= -->
+  <!-- JS -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -114,7 +114,7 @@
     function openMenu() {
       navLinks.classList.add('active');
       document.body.classList.add('nav-open');
-      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-expanded','true');
       const icon = menuToggle.querySelector('i');
       icon.classList.remove('fa-bars');
       icon.classList.add('fa-xmark');
@@ -123,27 +123,26 @@
     function closeMenu() {
       navLinks.classList.remove('active');
       document.body.classList.remove('nav-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-expanded','false');
       const icon = menuToggle.querySelector('i');
       icon.classList.add('fa-bars');
       icon.classList.remove('fa-xmark');
     }
 
-    menuToggle.addEventListener('click', (e) => {
+    menuToggle.addEventListener('click', e => {
       e.stopPropagation();
       navLinks.classList.contains('active') ? closeMenu() : openMenu();
     });
 
-    document.addEventListener('click', (e) => {
-      if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+    document.addEventListener('click', e => {
+      if(navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
         closeMenu();
       }
     });
 
-    // Close menu if mobile link clicked
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 576) closeMenu();
+        if(window.innerWidth <= 576) closeMenu();
       });
     });
   </script>
